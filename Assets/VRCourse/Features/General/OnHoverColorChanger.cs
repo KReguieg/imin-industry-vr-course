@@ -1,10 +1,10 @@
 ﻿using UnityEngine;
 using UnityEngine.XR.Interaction.Toolkit;
 
-[RequireComponent(typeof(XRSimpleInteractable))]
+[RequireComponent(typeof(XRBaseInteractable))]
 public class OnHoverColorChanger : MonoBehaviour
 {
-    private XRSimpleInteractable simpleInteractable = null;
+    private XRBaseInteractable simpleInteractable = null;
     private MeshRenderer meshRenderer = null;
 
     private Color startColor = Color.white;
@@ -12,7 +12,7 @@ public class OnHoverColorChanger : MonoBehaviour
 
     protected void OnEnable()
     {
-        simpleInteractable = GetComponent<XRSimpleInteractable>();
+        simpleInteractable = GetComponent<XRBaseInteractable>();
         meshRenderer = GetComponent<MeshRenderer>();
         startColor = meshRenderer.material.color;
 

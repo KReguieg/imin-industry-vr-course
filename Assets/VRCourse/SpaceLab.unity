@@ -1514,11 +1514,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: PushButton
       objectReference: {fileID: 0}
-    - target: {fileID: 4349772727721154832, guid: ae44e2f43eb6d2345bec1cee268de453,
-        type: 3}
-      propertyPath: m_InteractionManager
-      value: 
-      objectReference: {fileID: 1707976572}
     - target: {fileID: 4349772727721154838, guid: ae44e2f43eb6d2345bec1cee268de453,
         type: 3}
       propertyPath: m_InteractionManager
