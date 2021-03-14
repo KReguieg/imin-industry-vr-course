@@ -20,10 +20,8 @@ public class ARImageTracker : MonoBehaviour
         {
             if (!instantiated)
             {
-                GameObject spawnedARObject = Instantiate(ARObjectPrefab, hit.transform);
-                spawnedARObject.transform.localScale = Vector3.one;
+                Instantiate(ARObjectPrefab, hit.transform.position + Vector3.up * 0.1f, Quaternion.identity);
 
-                spawnedARObject.transform.position += Vector3.up * 0.25f;
                 instantiated = true;
             }
         }

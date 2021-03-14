@@ -67,10 +67,51 @@ PrefabInstance:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+    - target: {fileID: 5338336019502148215, guid: 557b502248577314b9520fa8723e54e6,
+        type: 3}
+      propertyPath: m_SelectEntered.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5338336019502148215, guid: 557b502248577314b9520fa8723e54e6,
+        type: 3}
+      propertyPath: m_SelectEntered.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5338336019502148215, guid: 557b502248577314b9520fa8723e54e6,
+        type: 3}
+      propertyPath: m_SelectEntered.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 5326656818582265692}
+    - target: {fileID: 5338336019502148215, guid: 557b502248577314b9520fa8723e54e6,
+        type: 3}
+      propertyPath: m_SelectEntered.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5338336019502148215, guid: 557b502248577314b9520fa8723e54e6,
+        type: 3}
+      propertyPath: m_SelectEntered.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: set_layer
+      objectReference: {fileID: 0}
+    - target: {fileID: 5338336019502148215, guid: 557b502248577314b9520fa8723e54e6,
+        type: 3}
+      propertyPath: m_SelectEntered.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 5338336019502148216, guid: 557b502248577314b9520fa8723e54e6,
         type: 3}
       propertyPath: m_Name
-      value: SwitchCube
+      value: SwitchCube Variant
+      objectReference: {fileID: 0}
+    - target: {fileID: 5338336019502148216, guid: 557b502248577314b9520fa8723e54e6,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 557b502248577314b9520fa8723e54e6, type: 3}
+--- !u!1 &5326656818582265692 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5338336019502148216, guid: 557b502248577314b9520fa8723e54e6,
+    type: 3}
+  m_PrefabInstance: {fileID: 286403490037314852}
+  m_PrefabAsset: {fileID: 0}
