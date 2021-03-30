@@ -32,7 +32,6 @@ public class HandAnimator : MonoBehaviour
     /// </summary>
     private readonly List<Finger> pointingFingers = new List<Finger>()
     {
-        new Finger(FingerType.Thumb),
         new Finger(FingerType.Index)
     };
 
@@ -70,6 +69,8 @@ public class HandAnimator : MonoBehaviour
     {
         SetFingerAnimationValues(grippingFingers, 1.0f);
         AnimateActionInput(grippingFingers);
+        //handAnimator.SetFloat("Index", 1.0f);
+        //handAnimator.SetFloat("Thumb", 1.0f);
     }
 
     private void PerformTriggerAnimation()
@@ -88,7 +89,7 @@ public class HandAnimator : MonoBehaviour
     {
         foreach (Finger finger in fingersToAnimate)
         {
-            AnimateFinger(finger.GetType().ToString(), finger.current);
+            AnimateFinger(finger.type.ToString(), finger.target); ;
         }
     }
 

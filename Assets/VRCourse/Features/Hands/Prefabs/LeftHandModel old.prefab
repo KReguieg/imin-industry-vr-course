@@ -199,8 +199,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2390890116425307937}
+  - component: {fileID: -6878333195804003216}
+  - component: {fileID: -8696125575249096628}
   m_Layer: 0
-  m_Name: LeftHand
+  m_Name: LeftHandModel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -222,6 +224,56 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &-6878333195804003216
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3055117612568907163}
+  m_Enabled: 1
+  m_Avatar: {fileID: 9000000, guid: 03d9dc01dd716214fbcfa4520d24cc5b, type: 3}
+  m_Controller: {fileID: 9100000, guid: baea18c9511dea84085682f53af6fdbc, type: 2}
+  m_CullingMode: 1
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &-8696125575249096628
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3055117612568907163}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0bc31f995854714498c57bc5cde2dd1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  controllerActionGrip: {fileID: 0}
+  controllerActionTrigger: {fileID: 0}
+  directionLight: {fileID: 0}
+  grip:
+    m_Name: Grip
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: fef1617f-a91c-47bb-b162-7a03c7ad2e97
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+  trigger:
+    m_Name: Trigger
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: 3cbc8908-4f46-4bd5-aa36-fda7c4ad6fcd
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
 --- !u!1 &3510799621151004953
 GameObject:
   m_ObjectHideFlags: 0
@@ -393,6 +445,7 @@ SkinnedMeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:

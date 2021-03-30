@@ -10,7 +10,7 @@
 
 public class Finger
 {
-    private FingerType type = FingerType.None;
+    public FingerType type = FingerType.None;
     public float current = 0.0f;
     public float target = 0.0f;
 
