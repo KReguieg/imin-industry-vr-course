@@ -15,7 +15,7 @@ public class HandAnimator : MonoBehaviour
     public InputAction grip;
     public InputAction trigger;
     private Animator handAnimator = null;
-    private float animationSpeed = 5.0f;
+    private float animationSpeed = 15.0f;
 
     /// <summary>
     /// List of fingers animated when grabbing / using grab action
