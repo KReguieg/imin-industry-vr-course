@@ -28,7 +28,7 @@ public class Spline : MonoBehaviour
     {
         if ( splineCount > 1)
         {
-            for (int i = 0; i < splineCount; i++)
+            for (int i = 0; i < splineCount - 1; i++)
             {
                 Debug.DrawLine(splinePoint[i], splinePoint[i + 1], Color.green);
             }
