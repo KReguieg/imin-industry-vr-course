@@ -135,6 +135,7 @@ GameObject:
   - component: {fileID: 2049691890964676389}
   - component: {fileID: 4466402383523706888}
   - component: {fileID: 2311669581590484948}
+  - component: {fileID: 4407829733395463220}
   m_Layer: 0
   m_Name: LeftHandModel
   m_TagString: Untagged
@@ -210,6 +211,18 @@ MonoBehaviour:
     m_Processors: 
     m_Interactions: 
     m_SingletonActionBindings: []
+--- !u!114 &4407829733395463220
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1673693396767794591}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a092727fec208e4ca81c950d5f6a92d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1704677342134068796
 GameObject:
   m_ObjectHideFlags: 0
