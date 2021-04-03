@@ -9,13 +9,11 @@ using UnityEngine.XR.Interaction.Toolkit;
 [RequireComponent(typeof (Animator))]
 public class HandAnimator : MonoBehaviour
 {
+    [SerializeField] private float animationSpeed = 15.0f;
     [SerializeField] private InputActionReference controllerActionGrip;
     [SerializeField] private InputActionReference controllerActionTrigger;
-    public GameObject directionLight;
-    public InputAction grip;
-    public InputAction trigger;
+
     private Animator handAnimator = null;
-    private float animationSpeed = 15.0f;
 
     /// <summary>
     /// List of fingers animated when grabbing / using grab action
