@@ -13,6 +13,8 @@ public class HandAnimator : MonoBehaviour
     [SerializeField] private InputActionReference controllerActionGrip;
     [SerializeField] private InputActionReference controllerActionTrigger;
 
+    [SerializeField] private Collider handCollider;
+
     private Animator handAnimator = null;
 
     /// <summary>
@@ -34,6 +36,17 @@ public class HandAnimator : MonoBehaviour
     };
 
     /// <summary>
+    /// List of fingers animated when grabbing / using grab action
+    /// </summary>
+    private readonly List<Finger> uiFingers = new List<Finger>()
+    {
+        new Finger(FingerType.Thumb),
+        new Finger(FingerType.Middle),
+        new Finger(FingerType.Ring),
+        new Finger(FingerType.Pinky)
+    };
+
+    /// <summary>
     /// Add your own hand animation here. For example a fist or a peace sign.
     /// </summary>
     //private readonly List<Finger> Fingers = new List<Finger>()
@@ -49,6 +62,31 @@ public class HandAnimator : MonoBehaviour
 
         controllerActionGrip.action.canceled += GripAction_canceled;
         controllerActionTrigger.action.canceled += TriggerAction_canceled;
+
+        CloseToUICollision.OnEnterUIArea += CloseToUICollision_OnEnterUIArea;
+        CloseToUICollision.OnExitUIArea += CloseToUICollision_OnExitUIArea;
+    }
+
+    private void CloseToUICollision_OnExitUIArea()
+    {
+        PerformExitUiAnimation();
+    }
+
+    private void CloseToUICollision_OnEnterUIArea()
+    {
+        PerformEnterUiAnimation();
+    }
+
+    private void PerformEnterUiAnimation()
+    {
+        SetFingerAnimationValues(uiFingers, 1.0f);
+        AnimateActionInput(uiFingers);
+    }
+
+    private void PerformExitUiAnimation()
+    {
+        SetFingerAnimationValues(uiFingers, 0.0f);
+        AnimateActionInput(uiFingers);
     }
 
     private void TriggerAction_canceled(InputAction.CallbackContext obj)
@@ -133,4 +171,5 @@ public class HandAnimator : MonoBehaviour
         controllerActionGrip.action.canceled -= GripAction_canceled;
         controllerActionTrigger.action.canceled -= TriggerAction_canceled;
     }
+
 }

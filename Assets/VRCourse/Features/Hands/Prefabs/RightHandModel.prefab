@@ -279,7 +279,7 @@ GameObject:
   - component: {fileID: 3144023735491922831}
   m_Layer: 0
   m_Name: finger_index_2_r_end
-  m_TagString: Untagged
+  m_TagString: RightHandUIAttach
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
