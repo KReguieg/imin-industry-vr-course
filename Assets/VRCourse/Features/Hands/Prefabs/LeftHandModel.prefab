@@ -190,27 +190,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d0bc31f995854714498c57bc5cde2dd1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  animationSpeed: 15
   controllerActionGrip: {fileID: -6131295136447488360, guid: c348712bda248c246b8c49b3db54643f,
     type: 3}
   controllerActionTrigger: {fileID: -5982496924579745919, guid: c348712bda248c246b8c49b3db54643f,
     type: 3}
-  directionLight: {fileID: 0}
-  grip:
-    m_Name: Grip
-    m_Type: 0
-    m_ExpectedControlType: 
-    m_Id: e386f565-b547-48d9-b59a-c11fc353aa48
-    m_Processors: 
-    m_Interactions: 
-    m_SingletonActionBindings: []
-  trigger:
-    m_Name: Trigger
-    m_Type: 0
-    m_ExpectedControlType: 
-    m_Id: 06804dc2-aaf1-4f47-8206-ba83a2589255
-    m_Processors: 
-    m_Interactions: 
-    m_SingletonActionBindings: []
 --- !u!114 &4407829733395463220
 MonoBehaviour:
   m_ObjectHideFlags: 0
