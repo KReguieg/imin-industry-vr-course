@@ -128,6 +128,19 @@ public class ActionBasedControllerManager : MonoBehaviour
         set => m_TeleportControllerGameObject = value;
     }
 
+    [SerializeField]
+    [Tooltip("The UI controller GameObject, used for changing default settings on its components during state transitions.")]
+    GameObject m_UIControllerGameObject;
+    /// <summary>
+    /// The teleport controller <see cref="GameObject"/>, used for changing default settings on its components during state transitions.
+    /// </summary>
+    public GameObject UIControllerGameObject
+    {
+        get => m_UIControllerGameObject;
+        set => m_UIControllerGameObject = value;
+    }
+
+
     [Space]
     [Header("Controller Actions") ]
 
@@ -247,10 +260,19 @@ public class ActionBasedControllerManager : MonoBehaviour
     XRBaseInteractor m_TeleportInteractor;
     XRInteractorLineVisual m_TeleportLineVisual;
 
+    XRBaseController m_UIController;
+    XRRayInteractor m_UIInteractor;
+    XRInteractorLineVisual m_UILineVisual;
+
+    string attachedHand;
+
     protected void OnEnable()
     {
+        attachedHand = gameObject.name;
         FindBaseControllerComponents();
         FindTeleportControllerComponents();
+
+        Invoke("SetUIControllerButWaitForModel", 0.1f);
 
         // Add default state events.
         m_SelectState.onEnter.AddListener(OnEnterSelectState);
@@ -264,6 +286,11 @@ public class ActionBasedControllerManager : MonoBehaviour
         m_InteractState.onEnter.AddListener(OnEnterInteractState);
         m_InteractState.onUpdate.AddListener(OnUpdateInteractState);
         m_InteractState.onExit.AddListener(OnExitInteractState);
+    }
+
+    void SetUIControllerButWaitForModel()
+    {
+        SetUIController(true);
     }
 
     protected void OnDisable()
@@ -383,6 +410,36 @@ public class ActionBasedControllerManager : MonoBehaviour
         }
     }
 
+    void FindUIControllerComponents()
+    {
+        if (m_UIControllerGameObject == null)
+        {
+            Debug.LogWarning("Missing reference to the Teleport Controller GameObject.", this);
+            return;
+        }
+
+        if (m_UIController == null)
+        {
+            m_UIController = m_UIControllerGameObject.GetComponent<XRBaseController>();
+            if (m_UIController == null)
+                Debug.LogWarning($"Cannot find {nameof(XRBaseController)} component on the UI Controller GameObject.", this);
+        }
+
+        if (m_UILineVisual == null)
+        {
+            m_UILineVisual = m_UIControllerGameObject.GetComponent<XRInteractorLineVisual>();
+            if (m_UILineVisual == null)
+                Debug.LogWarning($"Cannot find {nameof(XRInteractorLineVisual)} component on the UI Controller GameObject.", this);
+        }
+
+        if (m_UIInteractor == null)
+        {
+            m_UIInteractor = m_UIControllerGameObject.GetComponent<XRRayInteractor>();
+            if (m_TeleportInteractor == null)
+                Debug.LogWarning($"Cannot find {nameof(XRRayInteractor)} component on the UI Controller GameObject.", this);
+        }
+    }
+
     /// <summary>
     /// Find and configure the components on the base controller.
     /// </summary>
@@ -417,6 +474,22 @@ public class ActionBasedControllerManager : MonoBehaviour
         
         if (m_TeleportInteractor != null)
             m_TeleportInteractor.enabled = enable;
+    }
+
+    void SetUIController(bool enable)
+    {
+        FindUIControllerComponents();
+
+        if (m_UILineVisual != null)
+            m_UILineVisual.enabled = enabled;
+
+        if (m_UIController != null)
+            m_UIController.enabled = enabled;
+
+        if (m_UIInteractor != null)
+        {
+            m_UIInteractor.enabled = enabled;
+        }
     }
 
     void OnEnterSelectState(StateId previousStateId)

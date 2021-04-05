@@ -3,7 +3,9 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - LeftHandUIAttach
+  - RightHandUIAttach
   layers:
   - Default
   - TransparentFX
@@ -12,12 +14,12 @@ TagManager:
   - Water
   - UI
   - 
-  - 
+  - Hand
   - AR
   - TrackedImages
   - Interactive
-  - 
-  - 
+  - Brush
+  - InteractiveUI
   - 
   - 
   - 
