@@ -8,11 +8,13 @@ public class CloseToUICollision : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        OnEnterUIArea?.Invoke(gameObject);
+        if (other.gameObject.layer == LayerMask.NameToLayer("InteractiveUI"))
+            OnEnterUIArea?.Invoke(gameObject);
     }
 
     private void OnTriggerExit(Collider other)
     {
-        OnExitUIArea?.Invoke(gameObject);
+        if (other.gameObject.layer == LayerMask.NameToLayer("InteractiveUI"))
+            OnExitUIArea?.Invoke(gameObject);
     }
 }
