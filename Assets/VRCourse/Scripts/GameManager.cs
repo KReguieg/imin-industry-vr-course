@@ -8,7 +8,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private Collider roomDCollider;
     [SerializeField] private GameObject robot;
 
-    public UnityEvent OnEnteredRoomD;
+    public UnityEvent OnStartGame;
 
     private DeathCountdown deathCountdown;
     private RobotSoundManager robotSoundManager;
@@ -24,6 +24,7 @@ public class GameManager : MonoBehaviour
     {
         deathCountdown.StartCountdown();
         robotSoundManager.SetRoom(3);
-        robotSoundManager.PlayNextClip(); 
+        robotSoundManager.PlayNextClip();
+        OnStartGame.Invoke();
     }
 }

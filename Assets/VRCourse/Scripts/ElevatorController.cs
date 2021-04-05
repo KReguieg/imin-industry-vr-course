@@ -7,6 +7,7 @@ public class ElevatorController : MonoBehaviour
 {
     private XRRig XRRig;
     [SerializeField] private GameObject movingPlatform;
+    [SerializeField] private GameObject elevatorDoor;
     private bool hasPower;
 
     private Animator animator;
@@ -21,6 +22,7 @@ public class ElevatorController : MonoBehaviour
     public void PowerOnElevator()
     {
         Debug.Log("Elevator is on");
+        elevatorDoor.SetActive(false);
     }
 
     public void MoveElevator()
