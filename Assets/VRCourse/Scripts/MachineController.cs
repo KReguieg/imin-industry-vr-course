@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 [RequireComponent(typeof(AudioSource))]
 public class MachineController : MonoBehaviour
@@ -9,6 +10,8 @@ public class MachineController : MonoBehaviour
     private AudioSource audioSource;
 
     private int batteryLevel;
+
+    public UnityEvent OnMachineStarted;
 
     void Start()
     {
@@ -27,6 +30,6 @@ public class MachineController : MonoBehaviour
     private void StartMachine()
     {
         audioSource.Play();
-        FindObjectOfType<ElevatorController>().PowerOnElevator();
+        OnMachineStarted.Invoke();
     }
 }

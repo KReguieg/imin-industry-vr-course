@@ -16,3 +16,8 @@ MonoBehaviour:
   sounds:
   - {fileID: 8300000, guid: 0cadc4d85bd6a144d8472d58b3b29467, type: 3}
   - {fileID: 8300000, guid: 7883cec961d5bae43abb726f8f935901, type: 3}
+  test:
+  - clip: {fileID: 0}
+    pause: 0
+  - clip: {fileID: 0}
+    pause: 0
