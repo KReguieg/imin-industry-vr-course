@@ -18,7 +18,6 @@ public class DeathCountdown : MonoBehaviour
     private void Start()
     {
         audioSource = GetComponent<AudioSource>();
-        StartCountdown();
     }
     public void StartCountdown()
     {
