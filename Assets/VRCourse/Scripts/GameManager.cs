@@ -19,15 +19,11 @@ public class GameManager : MonoBehaviour
         robotSoundManager = FindObjectOfType<RobotSoundManager>();
     }
 
-    void Update()
-    {
-        
-    }
 
     public void StartMainGame()
     {
         deathCountdown.StartCountdown();
         robotSoundManager.SetRoom(3);
-        Debug.Log("main game");
+        robotSoundManager.PlayNextClip(); 
     }
 }
