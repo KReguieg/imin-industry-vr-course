@@ -12,9 +12,14 @@ public class GameManager : MonoBehaviour
 
     private DeathCountdown deathCountdown;
     private RobotSoundManager robotSoundManager;
+    private Statemachine statemachine;
 
     void Start()
     {
+        statemachine = new Statemachine();
+        statemachine.ChangeState(new Room0State());
+        statemachine.ExecuteStateUpdate();
+
         deathCountdown = FindObjectOfType<DeathCountdown>();
         robotSoundManager = FindObjectOfType<RobotSoundManager>();
     }
