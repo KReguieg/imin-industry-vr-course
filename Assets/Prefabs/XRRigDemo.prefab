@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 153326091}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: ModelPt
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -503,7 +503,7 @@ GameObject:
   m_Component:
   - component: {fileID: 502342291}
   - component: {fileID: 502342292}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: RightHand
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -636,7 +636,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_BaseControllerGameObject: {fileID: 4527581279215782378}
   m_TeleportControllerGameObject: {fileID: 341080492}
-  m_UIControllerGameObject: {fileID: 0}
+  m_UIControllerGameObject: {fileID: 734583282536234567}
   m_TeleportModeActivate: {fileID: 1263111715868034790, guid: c348712bda248c246b8c49b3db54643f,
     type: 3}
   m_TeleportModeCancel: {fileID: 737890489006591557, guid: c348712bda248c246b8c49b3db54643f,
@@ -733,7 +733,7 @@ MonoBehaviour:
   m_UpdateTrackingType: 0
   m_EnableInputTracking: 1
   m_EnableInputActions: 0
-  m_ModelPrefab: {fileID: 1306640934352848695, guid: 902b196ba17fa284bae10bdc5878a72d,
+  m_ModelPrefab: {fileID: 2049691890964676389, guid: fede8d0cbceaa2f42bad0c32b01be0a9,
     type: 3}
   m_ModelTransform: {fileID: 0}
   m_AnimateModel: 0
@@ -1153,7 +1153,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1499812065}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: ModelPt
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1186,7 +1186,8 @@ GameObject:
   - component: {fileID: 1670256628}
   - component: {fileID: 1670256627}
   - component: {fileID: 1670256626}
-  m_Layer: 0
+  - component: {fileID: 4316817549308249851}
+  m_Layer: 7
   m_Name: RightBaseController
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1223,7 +1224,7 @@ MonoBehaviour:
   m_UpdateTrackingType: 0
   m_EnableInputTracking: 1
   m_EnableInputActions: 1
-  m_ModelPrefab: {fileID: 1306640934352848695, guid: 902b196ba17fa284bae10bdc5878a72d,
+  m_ModelPrefab: {fileID: 2049691890964676389, guid: fede8d0cbceaa2f42bad0c32b01be0a9,
     type: 3}
   m_ModelTransform: {fileID: 0}
   m_AnimateModel: 0
@@ -1341,7 +1342,7 @@ MonoBehaviour:
   m_InteractionManager: {fileID: 0}
   m_InteractionLayerMask:
     serializedVersion: 2
-    m_Bits: 23
+    m_Bits: 55
   m_AttachTransform: {fileID: 0}
   m_StartingSelectedInteractable: {fileID: 0}
   m_HoverEntered:
@@ -1413,6 +1414,18 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.25
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &4316817549308249851
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1670256624}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c1331f31719980a4a856d6fcd57e2881, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1680501586
 GameObject:
   m_ObjectHideFlags: 0
@@ -1627,7 +1640,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1980187690}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: ModelPt
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1924,7 +1937,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3999614377249670141}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: ModelPt
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1957,7 +1970,8 @@ GameObject:
   - component: {fileID: 3338212552185374808}
   - component: {fileID: 701418902159677459}
   - component: {fileID: 5056854858080169606}
-  m_Layer: 0
+  - component: {fileID: 8221011401928552086}
+  m_Layer: 7
   m_Name: LeftBaseController
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1994,7 +2008,7 @@ MonoBehaviour:
   m_UpdateTrackingType: 0
   m_EnableInputTracking: 1
   m_EnableInputActions: 1
-  m_ModelPrefab: {fileID: 1306640934352848695, guid: 902b196ba17fa284bae10bdc5878a72d,
+  m_ModelPrefab: {fileID: 2049691890964676389, guid: 3a0a368ea70f1954db15b30e3a48a6e7,
     type: 3}
   m_ModelTransform: {fileID: 0}
   m_AnimateModel: 0
@@ -2112,7 +2126,7 @@ MonoBehaviour:
   m_InteractionManager: {fileID: 0}
   m_InteractionLayerMask:
     serializedVersion: 2
-    m_Bits: 23
+    m_Bits: 55
   m_AttachTransform: {fileID: 0}
   m_StartingSelectedInteractable: {fileID: 0}
   m_HoverEntered:
@@ -2184,6 +2198,18 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.25
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &8221011401928552086
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4527581279215782378}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c1331f31719980a4a856d6fcd57e2881, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1718169827811897259
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2272,16 +2298,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 705080846}
     m_Modifications:
-    - target: {fileID: 4669983209856182177, guid: e18415156db356a409426911e5a3ff44,
-        type: 3}
-      propertyPath: m_MaxRaycastDistance
-      value: 0.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4669983209856182179, guid: e18415156db356a409426911e5a3ff44,
-        type: 3}
-      propertyPath: m_LineLength
-      value: 0.1
-      objectReference: {fileID: 0}
     - target: {fileID: 4669983209856182180, guid: e18415156db356a409426911e5a3ff44,
         type: 3}
       propertyPath: m_RootOrder
@@ -2327,6 +2343,12 @@ PrefabInstance:
 --- !u!4 &734583282536234566 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4669983209856182180, guid: e18415156db356a409426911e5a3ff44,
+    type: 3}
+  m_PrefabInstance: {fileID: 5404002235946834402}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &734583282536234567 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4669983209856182181, guid: e18415156db356a409426911e5a3ff44,
     type: 3}
   m_PrefabInstance: {fileID: 5404002235946834402}
   m_PrefabAsset: {fileID: 0}

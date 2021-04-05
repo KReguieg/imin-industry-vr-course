@@ -1,21 +1,18 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.XR;
-using UnityEngine.XR.Interaction.Toolkit;
 
 [RequireComponent(typeof (Animator))]
 public class HandAnimator : MonoBehaviour
 {
-    [SerializeField] private float animationSpeed = 15.0f;
     [SerializeField] private InputActionReference controllerActionGrip;
     [SerializeField] private InputActionReference controllerActionTrigger;
 
-    [SerializeField] private Collider handCollider;
-
     private Animator handAnimator = null;
+
+    private float animationSpeed = 15.0f; // not used atm
+    private bool uiAnimationRunning = false;
+    private string selfAwarnenessHandName;
 
     /// <summary>
     /// List of fingers animated when grabbing / using grab action
@@ -65,15 +62,27 @@ public class HandAnimator : MonoBehaviour
 
         CloseToUICollision.OnEnterUIArea += CloseToUICollision_OnEnterUIArea;
         CloseToUICollision.OnExitUIArea += CloseToUICollision_OnExitUIArea;
+
+        selfAwarnenessHandName = gameObject.name.Replace("HandModel(Clone)", "");
     }
 
-    private void CloseToUICollision_OnExitUIArea()
+    private void CloseToUICollision_OnExitUIArea(GameObject triggeringHand)
     {
+        uiAnimationRunning = false;
+        if (!triggeringHand.name.Contains(selfAwarnenessHandName))
+        {
+            return;
+        }
         PerformExitUiAnimation();
     }
 
-    private void CloseToUICollision_OnEnterUIArea()
+    private void CloseToUICollision_OnEnterUIArea(GameObject triggeringHand)
     {
+        uiAnimationRunning = true;
+        if (!triggeringHand.name.Contains(selfAwarnenessHandName))
+        {
+            return;
+        }
         PerformEnterUiAnimation();
     }
 
@@ -91,28 +100,38 @@ public class HandAnimator : MonoBehaviour
 
     private void TriggerAction_canceled(InputAction.CallbackContext obj)
     {
-        SetFingerAnimationValues(pointingFingers, 0.0f);
-        AnimateActionInput(pointingFingers);
+        if (!uiAnimationRunning)
+        {
+            SetFingerAnimationValues(pointingFingers, 0.0f);
+            AnimateActionInput(pointingFingers);
+        }
     }
 
     private void GripAction_canceled(InputAction.CallbackContext obj)
     {
-        SetFingerAnimationValues(grippingFingers, 0.0f);
-        AnimateActionInput(grippingFingers);
+        if (!uiAnimationRunning)
+        {
+            SetFingerAnimationValues(grippingFingers, 0.0f);
+            AnimateActionInput(grippingFingers);
+        }
     }
 
     private void PerformGripAnimation()
     {
-        SetFingerAnimationValues(grippingFingers, 1.0f);
-        AnimateActionInput(grippingFingers);
-        //handAnimator.SetFloat("Index", 1.0f);
-        //handAnimator.SetFloat("Thumb", 1.0f);
+        if(!uiAnimationRunning)
+        {
+            SetFingerAnimationValues(grippingFingers, 1.0f);
+            AnimateActionInput(grippingFingers);
+        }
     }
 
     private void PerformTriggerAnimation()
     {
-        SetFingerAnimationValues(pointingFingers, 1.0f);
-        AnimateActionInput(pointingFingers);
+        if (!uiAnimationRunning)
+        {
+            SetFingerAnimationValues(pointingFingers, 1.0f);
+            AnimateActionInput(pointingFingers);
+        }
     }
 
 
@@ -170,6 +189,9 @@ public class HandAnimator : MonoBehaviour
 
         controllerActionGrip.action.canceled -= GripAction_canceled;
         controllerActionTrigger.action.canceled -= TriggerAction_canceled;
+
+        CloseToUICollision.OnEnterUIArea -= CloseToUICollision_OnEnterUIArea;
+        CloseToUICollision.OnExitUIArea -= CloseToUICollision_OnExitUIArea;
     }
 
 }
