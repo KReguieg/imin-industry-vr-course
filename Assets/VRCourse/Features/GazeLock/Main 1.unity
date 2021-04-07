@@ -555,7 +555,7 @@ Transform:
   m_GameObject: {fileID: 145485219}
   m_LocalRotation: {x: -0.19661008, y: -0.6792224, z: -0.1966108, w: 0.6792243}
   m_LocalPosition: {x: -33.554, y: 3.231, z: -25.007}
-  m_LocalScale: {x: 0.75586, y: 0.75586, z: 0.75586}
+  m_LocalScale: {x: 0.84656316, y: 0.84656316, z: 0.84656316}
   m_Children:
   - {fileID: 1478021486}
   - {fileID: 1739666209}
@@ -1532,28 +1532,40 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gazeState: 0
-  activationTime: 1.84
+  activationTime: 0.25
   OnGazeEnter:
     m_PersistentCalls:
       m_Calls: []
   OnGazeActivated:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: 
-        m_Mode: 1
+      - m_Target: {fileID: 458199482}
+        m_TargetAssemblyTypeName: LockController, Assembly-CSharp
+        m_MethodName: StartAdding
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
-          m_IntArgument: 0
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 2
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
   OnGazeLeft:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 458199482}
+        m_TargetAssemblyTypeName: LockController, Assembly-CSharp
+        m_MethodName: StopCounting
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!65 &232515421
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2053,14 +2065,32 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gazeState: 0
-  activationTime: 1.84
+  activationTime: 0.25
   OnGazeEnter:
     m_PersistentCalls:
+      m_Calls: []
+  OnGazeActivated:
+    m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 893531631}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
+      - m_Target: {fileID: 458199482}
+        m_TargetAssemblyTypeName: LockController, Assembly-CSharp
+        m_MethodName: StartSubtracking
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 1
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  OnGazeLeft:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 458199482}
+        m_TargetAssemblyTypeName: LockController, Assembly-CSharp
+        m_MethodName: StopCounting
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -2069,12 +2099,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  OnGazeActivated:
-    m_PersistentCalls:
-      m_Calls: []
-  OnGazeLeft:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!65 &330388286
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2534,6 +2558,7 @@ GameObject:
   - component: {fileID: 458199480}
   - component: {fileID: 458199479}
   - component: {fileID: 458199482}
+  - component: {fileID: 458199483}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -2636,11 +2661,107 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab2334166551378419c33a5594fa9e24, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  texts:
+  numbersText:
   - {fileID: 675674000}
   - {fileID: 893531633}
   - {fileID: 1062480604}
-  value: 000000000000000000000000
+  numberSpeed: 0.7
+--- !u!82 &458199483
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 458199477}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 53129dc7d5c40494a8c04e2ca5d0aa5c, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &460138131
 GameObject:
   m_ObjectHideFlags: 0
@@ -4364,17 +4485,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gazeState: 0
-  activationTime: 1.84
+  activationTime: 0.25
   OnGazeEnter:
     m_PersistentCalls:
       m_Calls: []
   OnGazeActivated:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 675673998}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
+      - m_Target: {fileID: 458199482}
+        m_TargetAssemblyTypeName: LockController, Assembly-CSharp
+        m_MethodName: StartSubtracking
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -4385,7 +4506,19 @@ MonoBehaviour:
         m_CallState: 2
   OnGazeLeft:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 458199482}
+        m_TargetAssemblyTypeName: LockController, Assembly-CSharp
+        m_MethodName: StopCounting
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!65 &731393104
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -9986,16 +10119,40 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gazeState: 0
-  activationTime: 1.84
+  activationTime: 0.25
   OnGazeEnter:
     m_PersistentCalls:
       m_Calls: []
   OnGazeActivated:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 458199482}
+        m_TargetAssemblyTypeName: LockController, Assembly-CSharp
+        m_MethodName: StartSubtracking
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 2
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   OnGazeLeft:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 458199482}
+        m_TargetAssemblyTypeName: LockController, Assembly-CSharp
+        m_MethodName: StopCounting
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!65 &1685433799
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -10336,17 +10493,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gazeState: 0
-  activationTime: 1.84
+  activationTime: 0.25
   OnGazeEnter:
     m_PersistentCalls:
       m_Calls: []
   OnGazeActivated:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 675673998}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
+      - m_Target: {fileID: 458199482}
+        m_TargetAssemblyTypeName: LockController, Assembly-CSharp
+        m_MethodName: StartAdding
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -10357,7 +10514,19 @@ MonoBehaviour:
         m_CallState: 2
   OnGazeLeft:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 458199482}
+        m_TargetAssemblyTypeName: LockController, Assembly-CSharp
+        m_MethodName: StopCounting
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!65 &1739666212
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -12297,14 +12466,32 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gazeState: 0
-  activationTime: 1.84
+  activationTime: 0.25
   OnGazeEnter:
     m_PersistentCalls:
+      m_Calls: []
+  OnGazeActivated:
+    m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 893531631}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
+      - m_Target: {fileID: 458199482}
+        m_TargetAssemblyTypeName: LockController, Assembly-CSharp
+        m_MethodName: StartAdding
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 1
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  OnGazeLeft:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 458199482}
+        m_TargetAssemblyTypeName: LockController, Assembly-CSharp
+        m_MethodName: StopCounting
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -12313,12 +12500,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  OnGazeActivated:
-    m_PersistentCalls:
-      m_Calls: []
-  OnGazeLeft:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!65 &2000661173
 BoxCollider:
   m_ObjectHideFlags: 0
