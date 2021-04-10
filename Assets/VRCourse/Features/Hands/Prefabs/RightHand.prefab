@@ -532,6 +532,8 @@ MonoBehaviour:
     type: 3}
   controllerActionTrigger: {fileID: 83097790271614945, guid: c348712bda248c246b8c49b3db54643f,
     type: 3}
+  controllerActionPrimary: {fileID: -8061240218431744966, guid: c348712bda248c246b8c49b3db54643f,
+    type: 3}
 --- !u!114 &978456651658119435
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -7,6 +8,7 @@ public class HandAnimator : MonoBehaviour
 {
     [SerializeField] private InputActionReference controllerActionGrip;
     [SerializeField] private InputActionReference controllerActionTrigger;
+    [SerializeField] private InputActionReference controllerActionPrimary;
 
     private Animator handAnimator = null;
 
@@ -44,6 +46,14 @@ public class HandAnimator : MonoBehaviour
     };
 
     /// <summary>
+    /// List of fingers animated when primaryButtonUsed / using primary action
+    /// </summary>
+    private readonly List<Finger> primaryFingers = new List<Finger>()
+    {
+        new Finger(FingerType.Thumb)
+    };
+
+    /// <summary>
     /// Add your own hand animation here. For example a fist or a peace sign.
     /// </summary>
     //private readonly List<Finger> Fingers = new List<Finger>()
@@ -51,19 +61,89 @@ public class HandAnimator : MonoBehaviour
     //    new Finger(FingerType.Index)
     //};
 
+
     private void OnEnable()
     {
         // Have it run your code when the Action is triggered.
-        controllerActionGrip.action.performed += _ => PerformGripAnimation();
-        controllerActionTrigger.action.performed += _ => PerformTriggerAnimation();
+        controllerActionGrip.action.performed += GripAction_performed;
+        controllerActionTrigger.action.performed += TriggerAction_performed;
+        controllerActionPrimary.action.performed += PrimaryAction_performed;
 
         controllerActionGrip.action.canceled += GripAction_canceled;
         controllerActionTrigger.action.canceled += TriggerAction_canceled;
+        controllerActionPrimary.action.canceled += PrimaryAction_canceled;
+
 
         CloseToUICollision.OnEnterUIArea += CloseToUICollision_OnEnterUIArea;
         CloseToUICollision.OnExitUIArea += CloseToUICollision_OnExitUIArea;
 
         selfAwarnenessHandName = gameObject.name.Replace("HandModel(Clone)", "");
+    }
+    private void OnDisable()
+    {
+        controllerActionGrip.action.performed -= GripAction_performed;
+        controllerActionTrigger.action.performed -= TriggerAction_performed;
+        controllerActionPrimary.action.performed -= PrimaryAction_performed;
+
+        controllerActionGrip.action.canceled -= GripAction_canceled;
+        controllerActionTrigger.action.canceled -= TriggerAction_canceled;
+        controllerActionPrimary.action.performed -= PrimaryAction_canceled;
+
+        CloseToUICollision.OnEnterUIArea -= CloseToUICollision_OnEnterUIArea;
+        CloseToUICollision.OnExitUIArea -= CloseToUICollision_OnExitUIArea;
+    }
+    private void Awake()
+    {
+        this.handAnimator = GetComponent<Animator>();
+    }
+
+    private void GripAction_performed(InputAction.CallbackContext obj)
+    {
+        if (!uiAnimationRunning)
+        {
+            SetFingerAnimationValues(grippingFingers, 1.0f);
+            AnimateActionInput(grippingFingers);
+        }
+    }
+    private void TriggerAction_performed(InputAction.CallbackContext obj)
+    {
+        if (!uiAnimationRunning)
+        {
+            SetFingerAnimationValues(pointingFingers, 1.0f);
+            AnimateActionInput(pointingFingers);
+        }
+    }
+    private void PrimaryAction_performed(InputAction.CallbackContext obj)
+    {
+        if (!uiAnimationRunning)
+        {
+            SetFingerAnimationValues(primaryFingers, 1.0f);
+            AnimateActionInput(primaryFingers);
+        }
+    }
+    private void GripAction_canceled(InputAction.CallbackContext obj)
+    {
+        if (!uiAnimationRunning)
+        {
+            SetFingerAnimationValues(grippingFingers, 0.0f);
+            AnimateActionInput(grippingFingers);
+        }
+    }
+    private void TriggerAction_canceled(InputAction.CallbackContext obj)
+    {
+        if (!uiAnimationRunning)
+        {
+            SetFingerAnimationValues(pointingFingers, 0.0f);
+            AnimateActionInput(pointingFingers);
+        }
+    }
+    private void PrimaryAction_canceled(InputAction.CallbackContext obj)
+    {
+        if (!uiAnimationRunning)
+        {
+            SetFingerAnimationValues(primaryFingers, 0.0f);
+            AnimateActionInput(primaryFingers);
+        }
     }
 
     private void CloseToUICollision_OnExitUIArea(GameObject triggeringHand)
@@ -75,7 +155,6 @@ public class HandAnimator : MonoBehaviour
         }
         PerformExitUiAnimation();
     }
-
     private void CloseToUICollision_OnEnterUIArea(GameObject triggeringHand)
     {
         uiAnimationRunning = true;
@@ -91,53 +170,10 @@ public class HandAnimator : MonoBehaviour
         SetFingerAnimationValues(uiFingers, 1.0f);
         AnimateActionInput(uiFingers);
     }
-
     private void PerformExitUiAnimation()
     {
         SetFingerAnimationValues(uiFingers, 0.0f);
         AnimateActionInput(uiFingers);
-    }
-
-    private void TriggerAction_canceled(InputAction.CallbackContext obj)
-    {
-        if (!uiAnimationRunning)
-        {
-            SetFingerAnimationValues(pointingFingers, 0.0f);
-            AnimateActionInput(pointingFingers);
-        }
-    }
-
-    private void GripAction_canceled(InputAction.CallbackContext obj)
-    {
-        if (!uiAnimationRunning)
-        {
-            SetFingerAnimationValues(grippingFingers, 0.0f);
-            AnimateActionInput(grippingFingers);
-        }
-    }
-
-    private void PerformGripAnimation()
-    {
-        if(!uiAnimationRunning)
-        {
-            SetFingerAnimationValues(grippingFingers, 1.0f);
-            AnimateActionInput(grippingFingers);
-        }
-    }
-
-    private void PerformTriggerAnimation()
-    {
-        if (!uiAnimationRunning)
-        {
-            SetFingerAnimationValues(pointingFingers, 1.0f);
-            AnimateActionInput(pointingFingers);
-        }
-    }
-
-
-    private void Awake()
-    {
-        this.handAnimator = GetComponent<Animator>();
     }
 
     private void AnimateActionInput(List<Finger> fingersToAnimate)
@@ -147,23 +183,11 @@ public class HandAnimator : MonoBehaviour
             AnimateFinger(finger.type.ToString(), finger.target); ;
         }
     }
-
     private void AnimateFinger(string fingerName, float animationBlendValue)
     {
         handAnimator.SetFloat(fingerName, animationBlendValue);
     }
 
-    private void CheckForTriggerInput()
-    {
-        //if (controller.inputDevice.TryGetFeatureValue(UnityEngine.XR.CommonUsages.trigger, out float pointingValue))
-        //    SetFingerAnimationValues(pointingFingers, pointingValue);
-    }
-
-    private void CheckForGripInput()
-    {
-        //if (controller.inputDevice.TryGetFeatureValue(UnityEngine.XR.CommonUsages.grip, out float gripValue))
-        //    SetFingerAnimationValues(pointingFingers, gripValue);
-    }
 
     private void SetFingerAnimationValues(List<Finger> fingersToAnimate, float targetValue)
     {
@@ -181,17 +205,4 @@ public class HandAnimator : MonoBehaviour
             finger.current = Mathf.MoveTowards(finger.current, finger.target, animationTimeStep);
         }
     }
-
-    private void OnDisable()
-    {
-        controllerActionGrip.action.performed -= _ => PerformGripAnimation();
-        controllerActionTrigger.action.performed -= _ => PerformTriggerAnimation();
-
-        controllerActionGrip.action.canceled -= GripAction_canceled;
-        controllerActionTrigger.action.canceled -= TriggerAction_canceled;
-
-        CloseToUICollision.OnEnterUIArea -= CloseToUICollision_OnEnterUIArea;
-        CloseToUICollision.OnExitUIArea -= CloseToUICollision_OnExitUIArea;
-    }
-
 }
