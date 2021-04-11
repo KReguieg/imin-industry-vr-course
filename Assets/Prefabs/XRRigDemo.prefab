@@ -1224,7 +1224,7 @@ MonoBehaviour:
   m_UpdateTrackingType: 0
   m_EnableInputTracking: 1
   m_EnableInputActions: 1
-  m_ModelPrefab: {fileID: 2049691890964676389, guid: fede8d0cbceaa2f42bad0c32b01be0a9,
+  m_ModelPrefab: {fileID: 5274246261815799083, guid: 18d6c10a69abfe04db6dd4e18e5a23ce,
     type: 3}
   m_ModelTransform: {fileID: 0}
   m_AnimateModel: 0
@@ -1575,7 +1575,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 1
   m_VolumeTrigger: {fileID: 0}
-  m_RenderPostProcessing: 0
+  m_RenderPostProcessing: 1
   m_Antialiasing: 0
   m_AntialiasingQuality: 2
   m_StopNaN: 0
@@ -2008,7 +2008,7 @@ MonoBehaviour:
   m_UpdateTrackingType: 0
   m_EnableInputTracking: 1
   m_EnableInputActions: 1
-  m_ModelPrefab: {fileID: 2049691890964676389, guid: 3a0a368ea70f1954db15b30e3a48a6e7,
+  m_ModelPrefab: {fileID: 472661839996650736, guid: 82ba8fa12c028034e8dc8fe678c0b477,
     type: 3}
   m_ModelTransform: {fileID: 0}
   m_AnimateModel: 0
