@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class BeltMovement : MonoBehaviour
@@ -18,8 +16,7 @@ public class BeltMovement : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log(other.gameObject.name);
-        if(other.gameObject.name == "XRRigDemo")
+        if(other.gameObject.name == "XRRig")
         {
             objectToMove = other.gameObject;
             activateBeltMovement = true;
