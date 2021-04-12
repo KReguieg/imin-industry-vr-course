@@ -787,6 +787,33 @@
                     "isPartOfComposite": false
                 }
             ]
+        },
+        {
+            "name": "UI",
+            "id": "a7c0e8a7-4b93-4ffd-b894-c16a53f6f764",
+            "actions": [
+                {
+                    "name": "ActivateHUD",
+                    "type": "Button",
+                    "id": "b1a625c8-2c61-40ea-a71c-33a58c02f12a",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "a6920f1f-3f2e-48e6-a60b-94971c04d19a",
+                    "path": "<Keyboard>/0",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ActivateHUD",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
         }
     ],
     "controlSchemes": [
