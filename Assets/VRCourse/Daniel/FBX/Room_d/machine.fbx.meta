@@ -2,7 +2,13 @@ fileFormatVersion: 2
 guid: f48e75ba300e2da42bea0faefe33e05d
 ModelImporter:
   serializedVersion: 20200
-  internalIDToNameTable: []
+  internalIDToNameTable:
+  - first:
+      74: -4115237863760133932
+    second: Camera_vr|Camera_vrAction
+  - first:
+      74: -1794899741167968333
+    second: Camera_vr|robot_lightAction
   externalObjects: {}
   materials:
     materialImportMode: 1
