@@ -1,12 +1,14 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.XR.Interaction.Toolkit;
 
 [RequireComponent(typeof(XRBaseInteractable))]
 public class OnHoverColorChanger : MonoBehaviour
 {
+    [SerializeField] private bool changeColorOnChildren = false;
     private XRBaseInteractable simpleInteractable = null;
-    private SkinnedMeshRenderer[] meshRenderer = null;
+    private List<Renderer> renderer = null;
 
     private Color[] startColors = null;
     public Color hoverColor = new Color(0.019f, 0.733f, 0.827f);
@@ -14,13 +16,14 @@ public class OnHoverColorChanger : MonoBehaviour
     protected void OnEnable()
     {
         simpleInteractable = GetComponent<XRBaseInteractable>();
-        meshRenderer = GetComponentsInChildren<SkinnedMeshRenderer>();
 
-        startColors = new Color[meshRenderer.Length];
+        renderer = (changeColorOnChildren)? GetComponentsInChildren<Renderer>().ToList() : new List<Renderer>() { GetComponent<Renderer>() };
 
-        for (int i = 0; i < meshRenderer.Length; i++)
+        startColors = new Color[renderer.Count];
+
+        for (int i = 0; i < renderer.Count; i++)
         {
-            startColors[i] = (meshRenderer[i].material.color != null) ? meshRenderer[i].material.color : Color.white;
+            startColors[i] = (renderer[i].material.color != null) ? renderer[i].material.color : Color.white;
         }
 
         simpleInteractable.hoverEntered.AddListener(OnHoverEntered);
@@ -29,17 +32,17 @@ public class OnHoverColorChanger : MonoBehaviour
 
     private void OnHoverExited(HoverExitEventArgs arg0)
     {
-        for (int i = 0; i < meshRenderer.Length; i++)
+        for (int i = 0; i < renderer.Count; i++)
         {
-            meshRenderer[i].material.color = startColors[i];
+            renderer[i].material.color = startColors[i];
         }
     }
 
     private void OnHoverEntered(HoverEnterEventArgs arg0)
     {
-        for (int i = 0; i < meshRenderer.Length; i++)
+        for (int i = 0; i < renderer.Count; i++)
         {
-            meshRenderer[i].material.color = hoverColor;
+            renderer[i].material.color = hoverColor;
         }
     }
 
