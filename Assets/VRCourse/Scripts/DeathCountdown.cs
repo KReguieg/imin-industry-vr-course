@@ -29,7 +29,7 @@ public class DeathCountdown : MonoBehaviour
         secondsLeft = countdownDuration;
         float minutesLeft;
 
-        while(secondsLeft >= 0)
+        while(secondsLeft > 0)
         {
             audioSource.Play();
             

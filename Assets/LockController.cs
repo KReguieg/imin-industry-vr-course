@@ -2,12 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.Events;
 
 [RequireComponent(typeof(AudioSource))]
 public class LockController : MonoBehaviour
 {
+    public UnityEvent OnPasswordUnlocked;
 
     public List<TMP_Text> numbersText = new List<TMP_Text>();
+
+    public List<int> password = new List<int>();
+    private List<int> currentCombination = new List<int>{ 0, 0, 0 };
 
     public float numberSpeed;
 
@@ -16,11 +21,6 @@ public class LockController : MonoBehaviour
     void Start()
     {
         audioSource = GetComponent<AudioSource>();
-    }
-
-    void Update()
-    {
-        
     }
 
     public void StartAdding(int index)
@@ -52,6 +52,23 @@ public class LockController : MonoBehaviour
 
             numbersText[index].text = newNumber.ToString();
             audioSource.Play();
+
+            currentCombination[index] = newNumber;
+
+            if (CheckIfValidPassword(currentCombination))
+                OnPasswordUnlocked.Invoke();
+                
         }
+    }
+
+    private bool CheckIfValidPassword(List<int> numbers)
+    {
+        for (int i = 0; i < numbers.Count; i++)
+        {
+            if (numbers[i] != password[i])
+                return false;
+        }
+
+        return true;
     }
 }
