@@ -225,17 +225,6 @@
                 },
                 {
                     "name": "",
-                    "id": "14a27f53-867e-4d15-92d9-3e36deb55b1b",
-                    "path": "<XRController>{LeftHand}/primaryButton",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Generic XR Controller",
-                    "action": "Teleport Select",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
                     "id": "3bf4fccb-bf42-4ec5-b215-c967f1d71642",
                     "path": "<XRController>{LeftHand}/devicePosition",
                     "interactions": "",
@@ -568,17 +557,6 @@
                 },
                 {
                     "name": "",
-                    "id": "90efd65e-3290-4798-af15-21ab4d7848b5",
-                    "path": "<XRController>{RightHand}/primaryButton",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Generic XR Controller",
-                    "action": "Teleport Mode Activate",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
                     "id": "de466e6e-12bf-46a1-b0fd-ffbc343f3399",
                     "path": "<XRController>{RightHand}/gripPressed",
                     "interactions": "",
@@ -785,6 +763,55 @@
                     "action": "Translate Anchor",
                     "isComposite": false,
                     "isPartOfComposite": true
+                },
+                {
+                    "name": "",
+                    "id": "fdd67184-7445-4dff-bd62-482e1b89b3fd",
+                    "path": "<XRController>{RightHand}/primaryButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Generic XR Controller",
+                    "action": "Teleport Mode Activate",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "970169e5-8807-4fdf-bea8-440f70eb734f",
+                    "path": "<XRController>{RightHand}/Primary2DAxis",
+                    "interactions": "",
+                    "processors": "StickDeadzone",
+                    "groups": "Continuous Move",
+                    "action": "Move",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        },
+        {
+            "name": "UI",
+            "id": "a7c0e8a7-4b93-4ffd-b894-c16a53f6f764",
+            "actions": [
+                {
+                    "name": "ActivateHUD",
+                    "type": "Button",
+                    "id": "b1a625c8-2c61-40ea-a71c-33a58c02f12a",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "a6920f1f-3f2e-48e6-a60b-94971c04d19a",
+                    "path": "<Keyboard>/0",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ActivateHUD",
+                    "isComposite": false,
+                    "isPartOfComposite": false
                 }
             ]
         }

@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ca802dab4f325a14dba890d1bd7f7083, type: 3}
+  m_Name: RoomD
+  m_EditorClassIdentifier: 
+  room: D
+  sounds:
+  - {fileID: 8300000, guid: dbe1762ed3931d2459c97886fa8bd5e6, type: 3}
+  - {fileID: 8300000, guid: edd3ec25b9b6a6548a90f312d9050b3d, type: 3}
+  - {fileID: 8300000, guid: bf626b86759450943914108405dc718a, type: 3}
+  - {fileID: 8300000, guid: 5d2be1bc70d588348a418185e26d30fa, type: 3}

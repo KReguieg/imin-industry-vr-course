@@ -6,8 +6,8 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/WorldInteractionDemo.unity
-    guid: 3d16fc5db26e2354e9ac2a5031a52e6d
+    path: Assets/VRCourse/Daniel/Main.unity
+    guid: a22e1f6d58ef55741b4d7bfea758edf2
   m_configObjects:
     Unity.XR.Oculus.Settings: {fileID: 11400000, guid: f3d36b094c7e90a48bfeecc8253553a0,
       type: 2}
@@ -16,4 +16,6 @@ EditorBuildSettings:
     com.unity.input.settings: {fileID: 11400000, guid: c73b900e4bace6d4db2eee9dbcce6484,
       type: 2}
     com.unity.xr.management.loader_settings: {fileID: 11400000, guid: 12fb2884f45e57a48a232b374653f4dd,
+      type: 2}
+    com.unity.xr.openxr.settings4: {fileID: 11400000, guid: 381b501e54671634fb4d847fbc51dc91,
       type: 2}
